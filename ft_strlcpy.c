@@ -6,22 +6,29 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:19:33 by sbaba             #+#    #+#             */
-/*   Updated: 2024/04/19 15:44:26 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/05/14 17:15:41 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+// #include "libft.h"
+
+size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {
-	int		i;
+	size_t	i;
+	size_t	strlen;
 
 	i = 0;
-	while (src[i])
+	strlen = 0;
+	while(src[strlen] != '\0' && strlen < size - 1)
+		strlen++;
+
+	while (src[i] && i < size - 1)
 	{
 		dest[i] = src[i];
 		i++;
 	}
 	dest[i] = '\0';
-	return (dest);
+	return (strlen);
 }
 
 // #include <stdio.h>
@@ -32,6 +39,6 @@ char	*ft_strcpy(char *dest, char *src)
 // 	char	*src = "Hello, World!";
 
 // 	printf("[Before]\ndest: %s\nsrc: %s\n\n", dest, src);
-// 	ft_strcpy(dest, src);
+// 	ft_strlcpy(dest, src, 15);
 // 	printf("[After]\ndest: %s\nsrc: %s\n\n", dest, src);
 // }

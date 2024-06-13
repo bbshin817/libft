@@ -6,27 +6,32 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:41:40 by sbaba             #+#    #+#             */
-/*   Updated: 2024/04/19 15:42:12 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/05/14 16:59:53 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
+// #include "libft.h"
+
+size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
-	int	destlen;
+	size_t	destlen;
+	size_t	srclen;
 	int	i;
 
 	destlen = 0;
+	srclen = 0;
 	i = 0;
-	while (dest[destlen] != '\0')
+	while (dest[destlen] != '\0' && destlen < size)
 		destlen++;
-	while (src[i] != '\0')
+	while (destlen < size - 1 && src[i] != '\0')
 	{
 		dest[destlen] = src[i];
 		destlen++;
+		srclen++;
 		i++;
 	}
 	dest[destlen] = '\0';
-	return (dest);
+	return (destlen + srclen);
 }
 
 // #include <stdio.h>
@@ -38,5 +43,6 @@ char	*ft_strcat(char *dest, char *src)
 // 	char	src[] = "Kong";
 
 // 	printf("[Strings]\ndest: \"%s\"\nsrc: \"%s\"\n\n", dest, src);
-// 	printf("[Result]\nft_strcat(): %s\n", ft_strcat(dest, src));
+// 	printf("[Result]\nft_strcat(): %zu\n", ft_strlcat(dest, src, 8));
+// 	printf("dest: %s", dest);
 // }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:03:00 by sbaba             #+#    #+#             */
-/*   Updated: 2024/04/26 15:04:04 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/06/09 22:36:58 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+// #include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -18,21 +18,24 @@ void	*ft_calloc(size_t count, size_t size)
 	void			*ptr;
 	size_t			i;
 
-	ptr = malloc(count * size);
-	if (ptr != NULL)
+	if (0 < size && count <= __SIZE_MAX__ / size)
 	{
-		p = (unsigned char *)ptr;
-		i = 0;
-		while (i < count * size)
+		ptr = malloc(count * size);
+		if (ptr != NULL)
 		{
-			p[i] = 0;
-			i++;
+			p = (unsigned char *)ptr;
+			i = 0;
+			while (i < count * size)
+			{
+				p[i] = 0;
+				i++;
+			}
+			return (ptr);
 		}
-		return (ptr);
-	}
-	else
-	{
-		return (NULL);
+		else
+		{
+			return (NULL);
+		}
 	}
 }
 

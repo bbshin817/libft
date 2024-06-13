@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:42:59 by sbaba             #+#    #+#             */
-/*   Updated: 2024/04/19 15:43:21 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/06/13 02:53:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+// #include "libft.h"
+
+char	*ft_strnstr(char *str, char *to_find, size_t size)
 {
-	int		f;
-	int		s;
+	size_t		f;
+	size_t		s;
 
 	f = 0;
 	s = 0;
 	if (*to_find == '\0')
 		return (str);
-	while (str[f] != '\0')
+	while (str[f] != '\0' && f < size)
 	{
 		s = 0;
 		while (str[f + s] == to_find[s] && to_find[s] != '\0')
@@ -30,7 +32,7 @@ char	*ft_strstr(char *str, char *to_find)
 			return (&str[f]);
 		f++;
 	}
-	return (0);
+	return (NULL);
 }
 
 // #include <stdio.h>
