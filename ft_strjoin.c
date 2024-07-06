@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 21:49:16 by user              #+#    #+#             */
-/*   Updated: 2024/06/13 02:51:52 by user             ###   ########.fr       */
+/*   Updated: 2024/07/06 16:34:26 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static size_t	ft_strcat(char *dest, const char *src)
 {
 	size_t	destlen;
 	size_t	srclen;
-	int	i;
+	int		i;
 
 	destlen = 0;
 	srclen = 0;
@@ -41,9 +41,8 @@ static size_t	ft_strcpy(char *dest, const char *src)
 
 	i = 0;
 	strlen = 0;
-	while(src[strlen] != '\0')
+	while (src[strlen] != '\0')
 		strlen++;
-
 	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
@@ -57,35 +56,32 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t		l1;
 	size_t		l2;
-	char	*result;
+	char		*result;
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
 	l1 = ft_strlen(s1);
 	l2 = ft_strlen(s2);
-	
 	result = (char *)malloc(l1 + l2 + 1);
 	if (result == NULL)
 		return (NULL);
 	ft_strcpy(result, s1);
 	ft_strcat(result, s2);
-	
 	return (result);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main()
-{
-	const char s1[] = "Hello, ";
-	const char s2[] = "World!";
-	
-	char *result = ft_strjoin(s1, s2);
-	if(result != NULL){
-		printf("Result: %s\n", result);
-		free(result);
-	}else{
-		printf("failed!");
-	}
-	return (0);
-}
+// int main()
+// {
+// 	const char s1[] = "Hello, ";
+// 	const char s2[] = "World!";
+// 	char *result = ft_strjoin(s1, s2);
+// 	if(result != NULL){
+// 		printf("Result: %s\n", result);
+// 		free(result);
+// 	}else{
+// 		printf("failed!");
+// 	}
+// 	return (0);
+// }

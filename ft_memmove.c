@@ -6,11 +6,11 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:52:39 by sbaba             #+#    #+#             */
-/*   Updated: 2024/05/06 16:20:04 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/07/06 17:21:39 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
@@ -20,10 +20,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	if (dest == src)
 		return (dest);
-
 	d = (unsigned char *)dest;
 	s = (const unsigned char *)src;
-
 	if (s < d && s + n > d)
 	{
 		i = n;

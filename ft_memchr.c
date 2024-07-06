@@ -6,11 +6,11 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:33:33 by sbaba             #+#    #+#             */
-/*   Updated: 2024/05/06 15:59:13 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/07/06 17:21:39 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
 
 void	*ft_memchr(const void *b, int c, size_t len)
 {

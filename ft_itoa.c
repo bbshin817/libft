@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 21:59:11 by user              #+#    #+#             */
-/*   Updated: 2024/06/13 04:07:10 by user             ###   ########.fr       */
+/*   Updated: 2024/07/06 17:21:39 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
 
 int	ft_pow(int x, int y)
 {
-	int result;
+	int	result;
 
 	result = 1;
 	while (0 < y)
@@ -22,10 +22,10 @@ int	ft_pow(int x, int y)
 		result *= x;
 		y--;
 	}
-	return result;
+	return (result);
 }
 
-char	*returnString(char *result, long nBuf, int len, int flag)
+char	*return_str(char *result, long nbuf, int len, int flag)
 {
 	int		i;
 	long	buff;
@@ -33,7 +33,7 @@ char	*returnString(char *result, long nBuf, int len, int flag)
 	int		latest;
 
 	i = 0;
-	buff = nBuf;
+	buff = nbuf;
 	div = ft_pow(10, (len - 1));
 	if (flag < 0)
 	{
@@ -56,20 +56,20 @@ char	*returnString(char *result, long nBuf, int len, int flag)
 char	*ft_itoa(int n)
 {
 	int		len;
-	long	nBuf;
+	long	nbuf;
 	long	temp;
-	int 	flag;
+	int		flag;
 	char	*result;
 
-	nBuf = (long)n;
+	nbuf = (long)n;
 	len = 0;
 	flag = 1;
-	if (nBuf < 0)
+	if (nbuf < 0)
 	{
 		flag = -1;
-		nBuf = -nBuf;
+		nbuf = -nbuf;
 	}
-	temp = nBuf;
+	temp = nbuf;
 	while (0 < temp)
 	{
 		len++;
@@ -78,7 +78,7 @@ char	*ft_itoa(int n)
 	result = (char *)malloc((len + 1) * sizeof(char));
 	if (result == NULL)
 		return (NULL);
-	returnString(result, nBuf, len, flag);
+	return_str(result, nbuf, len, flag);
 	return (result);
 }
 

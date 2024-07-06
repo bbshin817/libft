@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:21:37 by sbaba             #+#    #+#             */
-/*   Updated: 2024/06/09 23:21:52 by user             ###   ########.fr       */
+/*   Updated: 2024/07/06 17:21:39 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
 
 size_t	ft_strlen(char *str)
 {
@@ -19,7 +19,7 @@ size_t	ft_strlen(char *str)
 	return (0);
 }
 
-static int	getTrimedLength(char const *s1, char const *set)
+static int	get_trimmed_length(char const *s1, char const *set)
 {
 	int		i;
 	int		s;
@@ -41,7 +41,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		s;
 	char	*str;
 
-	s = getTrimedLength(s1, set);
+	s = get_trimmed_length(s1, set);
 	str = (char *)malloc(sizeof(char) * s);
 	if (str == NULL)
 		return (NULL);

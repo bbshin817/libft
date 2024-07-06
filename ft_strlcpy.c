@@ -6,11 +6,11 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:19:33 by sbaba             #+#    #+#             */
-/*   Updated: 2024/05/14 17:15:41 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/07/06 18:29:43 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {
@@ -19,10 +19,9 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 
 	i = 0;
 	strlen = 0;
-	while(src[strlen] != '\0' && strlen < size - 1)
+	while (src[strlen] != '\0' && strlen < size)
 		strlen++;
-
-	while (src[i] && i < size - 1)
+	while (src[i] && i < size)
 	{
 		dest[i] = src[i];
 		i++;
@@ -30,15 +29,3 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 	dest[i] = '\0';
 	return (strlen);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	dest[20];
-// 	char	*src = "Hello, World!";
-
-// 	printf("[Before]\ndest: %s\nsrc: %s\n\n", dest, src);
-// 	ft_strlcpy(dest, src, 15);
-// 	printf("[After]\ndest: %s\nsrc: %s\n\n", dest, src);
-// }

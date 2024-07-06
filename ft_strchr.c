@@ -6,18 +6,17 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:26:23 by sbaba             #+#    #+#             */
-/*   Updated: 2024/05/06 16:43:50 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/07/06 17:21:39 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
 	const unsigned char	*bs;
 
 	bs = (const unsigned char *)s;
-
 	while (*bs != '\0')
 	{
 		if (*bs == (unsigned char)c)

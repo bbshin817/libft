@@ -6,17 +6,17 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:41:40 by sbaba             #+#    #+#             */
-/*   Updated: 2024/05/14 16:59:53 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/07/06 18:22:42 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
 
 size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
 	size_t	destlen;
 	size_t	srclen;
-	int	i;
+	int		i;
 
 	destlen = 0;
 	srclen = 0;
@@ -35,13 +35,11 @@ size_t	ft_strlcat(char *dest, char *src, size_t size)
 }
 
 // #include <stdio.h>
-// #include <string.h>
-
+// #include <string.h> 
 // int	main(void)
 // {
 // 	char	dest[] = "Hong";
 // 	char	src[] = "Kong";
-
 // 	printf("[Strings]\ndest: \"%s\"\nsrc: \"%s\"\n\n", dest, src);
 // 	printf("[Result]\nft_strcat(): %zu\n", ft_strlcat(dest, src, 8));
 // 	printf("dest: %s", dest);

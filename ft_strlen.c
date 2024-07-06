@@ -6,13 +6,13 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:22:20 by sbaba             #+#    #+#             */
-/*   Updated: 2024/05/06 15:59:13 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/07/06 17:34:52 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft.h"
+#include "libft.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(const	char *str)
 {
 	if (*str != '\0')
 		return (1 + ft_strlen(++str));
