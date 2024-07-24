@@ -6,7 +6,7 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:19:33 by sbaba             #+#    #+#             */
-/*   Updated: 2024/07/06 18:29:43 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/07/24 18:30:53 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 
 	i = 0;
 	strlen = 0;
-	while (src[strlen] != '\0' && strlen < size)
+	while (src[strlen] != '\0')
 		strlen++;
-	while (src[i] && i < size)
+	if (0 == size)
+		return (strlen);
+	while (src[i] != '\0' && i < size - 1)
 	{
 		dest[i] = src[i];
 		i++;
@@ -29,3 +31,8 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 	dest[i] = '\0';
 	return (strlen);
 }
+
+// int	main(void)
+// {
+// 	return (0);
+// }

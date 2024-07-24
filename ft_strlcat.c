@@ -6,7 +6,7 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:41:40 by sbaba             #+#    #+#             */
-/*   Updated: 2024/07/06 18:22:42 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/07/24 18:41:37 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ size_t	ft_strlcat(char *dest, char *src, size_t size)
 	destlen = 0;
 	srclen = 0;
 	i = 0;
-	while (dest[destlen] != '\0' && destlen < size)
+	while (dest[destlen] != '\0')
 		destlen++;
+	if (0 == size)
+		return (destlen);
 	while (destlen < size - 1 && src[i] != '\0')
 	{
 		dest[destlen] = src[i];

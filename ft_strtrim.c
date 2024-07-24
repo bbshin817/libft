@@ -6,18 +6,11 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:21:37 by sbaba             #+#    #+#             */
-/*   Updated: 2024/07/06 17:21:39 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/07/24 17:52:05 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-size_t	ft_strlen(char *str)
-{
-	if (*str != '\0')
-		return (1 + ft_strlen(++str));
-	return (0);
-}
 
 static int	get_trimmed_length(char const *s1, char const *set)
 {

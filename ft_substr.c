@@ -6,7 +6,7 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:43:54 by sbaba             #+#    #+#             */
-/*   Updated: 2024/07/06 17:21:39 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/07/24 17:59:05 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ char	*ft_substr(char const *src, unsigned int start, size_t len)
 		substr_len = src_len - start;
 	else
 		substr_len = len;
-	result = (char *)malloc(substr_len + 1);
+	result = (char *)malloc(substr_len + 1 * sizeof(char));
 	if (result == NULL)
 		return (NULL);
-	ft_strlcpy(result, src + start, substr_len);
+	ft_strlcpy(result, (char *)(src + start), substr_len);
 	result[substr_len] = '\0';
 	return (result);
 }
