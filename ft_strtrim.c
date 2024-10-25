@@ -3,53 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:21:37 by sbaba             #+#    #+#             */
-/*   Updated: 2024/07/24 17:52:05 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/10/26 05:50:30 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_trimmed_length(char const *s1, char const *set)
-{
-	int		i;
-	int		s;
-
+static size_t	search_by_front(const char *s1, const char *set) {
+	size_t	i;
+	
 	i = 0;
-	s = 0;
-	while (s1[i] != '\0')
-	{
-		if (s1[i] != *set)
-			s++;
+	while (s1[i] != '\0' && ft_strchr(set, s1[i]))  // `strchr`で`set`の文字が含まれているかを確認
 		i++;
-	}
-	return (s);
+	return (i);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	int		i;
-	int		s;
-	char	*str;
+static size_t	search_by_back(const char *s1, const char *set) {
+	size_t i;
+	
+	i = ft_strlen(s1);
+	while (0 < i && ft_strchr(set, s1[i - 1]))  // `strchr`で`set`の文字が含まれているかを確認
+		i--;
+	return (i);
+}
 
-	s = get_trimmed_length(s1, set);
-	str = (char *)malloc(sizeof(char) * s);
-	if (str == NULL)
+char	*ft_strtrim(const char *s1, const char *set) {
+    size_t	front;
+    size_t	back;
+	size_t	len;
+	char	*result;
+	
+	if (s1 == NULL || set == NULL)
 		return (NULL);
-	i = 0;
-	s = 0;
-	while (s1[i] != '\0')
-	{
-		if (s1[i] != *set)
-		{
-			str[s] = s1[i];
-			s++;
-		}
-		i++;
-	}
-	return (str);
+	front = search_by_front(s1, set);
+	back = search_by_back(s1, set);
+	if (front >= back)
+		len = 0;
+	else
+		len = back - front;
+	result = (char *)malloc(len + 1);
+	if (result == NULL)
+		return (NULL);
+	ft_strlcpy(result, (char *)(s1 + front), len + 1);
+	result[len] = '\0';
+	return (result);
 }
 
 /*
