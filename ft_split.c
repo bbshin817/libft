@@ -3,73 +3,116 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/09 21:58:56 by user              #+#    #+#             */
-/*   Updated: 2024/07/06 16:29:46 by sbaba            ###   ########.fr       */
+/*   Created: 2024/10/15 03:09:25 by user              #+#    #+#             */
+/*   Updated: 2024/10/21 11:20:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	freeUpArray(char *array, int index)
+static int	get_word_length(char const *s, char c)
 {
-	int	i;
+	int	len;
+	int	word_len;
+	int	flag;
 
-	i = 0;
-	while (i < index)
+	len = 0;
+	word_len = 0;
+	flag = 0;
+	while (s[len] != '\0')
 	{
-		free(array[i]);
-		i++;
+		if (s[len] != c && flag == 0)
+		{
+			flag++;
+			word_len++;
+		}
+		else if (s[len] == c)
+			flag = 0;
+		len++;
 	}
-	free(array);
+	return (word_len);
 }
 
-int	getCountOfApperDelimiters(char const *s, char c)
+static void	append_to_array(char *array, char const *s, int a, int len)
 {
-	int	c;
+	int	i;
+	int	start;
 
-	c = 0;
-	while (*s != '\0')
+	i = 0;
+	start = a - len;
+	while (i < len)
 	{
-		if(*s == c)
-			c++;
-		s++;
+		array[i] = s[start + i];
+		i++;
 	}
-	return (c);
+	array[i] = '\0';
+}
+
+static char	*prepend(char const *s, int len, int i)
+{
+	char	*arr;
+
+	arr = (char *)malloc((len + 1) * sizeof(char));
+	if (arr == NULL)
+		return (NULL);
+	append_to_array(arr, s, i, len);
+	return (arr);
+}
+
+static char	**append_array(char **array, char const *s, char c)
+{
+	int		i;
+	int		len;
+	int		array_index;
+
+	i = 0;
+	len = 0;
+	array_index = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+		{
+			array[array_index] = prepend(s, len, i);
+			if (array[array_index] == NULL)
+				return (NULL);
+			len = 0;
+			array_index++;
+		}
+		else
+			len++;
+		i++;
+	}
+	array[array_index] = prepend(s, len, i);
+	array[array_index + 1] = NULL;
+	return (array);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int 	start;
-	int		end;
-	int		index;
-	int		length;
-	char	**result;
+	char	**array;
 
-	if (!s)
+	array = (char **)malloc((get_word_length(s, c) + 1) * sizeof(char *));
+	if (array == NULL)
 		return (NULL);
-	result = malloc((getCountOfApperDelimiters(s, c) + 1) * sizeof(char *));
-	if(!result)
-		return (NULL);
-	start = 0;
-	end = 0;
-	while (s[end])
-	{
-		if(s[end] == c)
-		{
-			length = end - start;
-			result[index] = malloc(length + 1);
-			if(!result[index])
-			{
-				freeUpArray(result[index], index);
-				return (NULL);
-			}
-			ft_strlcpy(result[index], &s[start], length);
-			result[index][length] = '\0';
-			index++;
-			start = end + 1;
-		}
-		end++;
-	}
+	array = append_array(array, s, c);
+	return (array);
 }
+
+// #include <stdio.h>
+
+// int	main()
+// {
+// 	char	*string = "tacorice,potato,fish";
+// 	char	c = ',';
+// 	char	**ptr = ft_split(string, c);
+
+// 	while (*ptr != NULL)
+// 	{
+// 		printf("String: %s\n", *ptr);
+// 		ptr++;
+// 	}
+
+// 	return (0);
+// }

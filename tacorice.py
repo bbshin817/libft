@@ -1,9 +1,6 @@
 import glob, os
 
 ignores = [
-	"ft_memmove.c",
-	"ft_split.c",
-	"ft_striteri.c"
 ]
 
 files = glob.glob("./*.c")

@@ -3,35 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:52:39 by sbaba             #+#    #+#             */
-/*   Updated: 2024/07/06 17:21:39 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/10/22 02:07:37 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+static void	*copy_with_overlap(char *d, const char *s, size_t n, int b)
 {
-	size_t					i;
-	unsigned char* 			d;
-	const unsigned char*	s;
+	size_t	i;
 
-	if (dest == src)
-		return (dest);
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
-	if (s < d && s + n > d)
-	{
-		i = n;
-		while (0 < i)
-		{
-			d[i - 1] = s[i - 1];
-			i--;
-		}
-	}
-	else
+	if (b)
 	{
 		i = 0;
 		while (i < n)
@@ -40,19 +25,27 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			i++;
 		}
 	}
-	return (dest);
+	else
+	{
+		i = n;
+		while (0 < i)
+		{
+			d[i - 1] = s[i - 1];
+			i--;
+		}
+	}
+	return (d);
 }
 
-// #include <stdio.h>
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	char			*d;
+	const char		*s;
 
-// int	main(void)
-// {
-// 	char	dst[20];
-// 	char	src[] = "hello, world!";
-
-// 	printf("[Before]\n");
-// 	printf("dst: %s\nsrc: %s\n\n", dst, src);
-// 	ft_memmove(dst + 10, src, 13);
-// 	printf("[After]\n");
-// 	printf("dst: %s\nsrc: %s\n\n", dst, src);
-// }
+	if (dest == src)
+		return (dest);
+	d = (char *)dest;
+	s = (const char *)src;
+	copy_with_overlap(d, s, n, d < s);
+	return (dest);
+}

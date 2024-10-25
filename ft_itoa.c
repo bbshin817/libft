@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 21:59:11 by user              #+#    #+#             */
-/*   Updated: 2024/07/06 17:21:39 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/10/21 11:20:20 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_pow(int x, int y)
+static int	ft_pow(int x, int y)
 {
 	int	result;
 
@@ -25,15 +25,23 @@ int	ft_pow(int x, int y)
 	return (result);
 }
 
-char	*return_str(char *result, long nbuf, int len, int flag)
+static char	*check_zero(char *result, long nbuf)
+{
+	if (0 == nbuf)
+	{
+		result[0] = '0';
+		result[1] = '\0';
+	}
+	return (result);
+}
+
+static char	*return_str(char *result, long nbuf, int len, int flag)
 {
 	int		i;
-	long	buff;
 	int		div;
-	int		latest;
+	long	latest;
 
 	i = 0;
-	buff = nbuf;
 	div = ft_pow(10, (len - 1));
 	if (flag < 0)
 	{
@@ -41,10 +49,12 @@ char	*return_str(char *result, long nbuf, int len, int flag)
 		len++;
 		i++;
 	}
+	if (0 == nbuf)
+		check_zero(result, nbuf);
 	while (i < len)
 	{
-		latest = (int)(buff / div);
-		buff = buff - latest * div;
+		latest = (long)(nbuf / div);
+		nbuf = nbuf - latest * div;
 		result[i] = '0' + latest;
 		div /= 10;
 		i++;
@@ -63,8 +73,8 @@ char	*ft_itoa(int n)
 
 	nbuf = (long)n;
 	len = 0;
-	flag = 1;
-	if (nbuf < 0)
+	flag = 0;
+	if (nbuf <= 0)
 	{
 		flag = -1;
 		nbuf = -nbuf;
@@ -75,7 +85,7 @@ char	*ft_itoa(int n)
 		len++;
 		temp /= 10;
 	}
-	result = (char *)malloc((len + 1) * sizeof(char));
+	result = (char *)malloc(len + 1 + flag * -1);
 	if (result == NULL)
 		return (NULL);
 	return_str(result, nbuf, len, flag);
@@ -87,12 +97,9 @@ char	*ft_itoa(int n)
 
 // int	main()
 // {
-// 	int		num = INT_MAX;
-// 	char	*result;
-
-// 	result = ft_itoa(num);
+// 	char	*result = ft_itoa(0);
 // 	if (result != NULL)
-// 		printf("Result: %s\n", result);
+// 		printf("%s", result);
 // 	else
 // 		printf("failed!");
 // 	free(result);

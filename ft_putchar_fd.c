@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 21:04:51 by user              #+#    #+#             */
-/*   Updated: 2024/07/06 17:23:37 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/10/22 02:36:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// void	ft_putchar_fd(char c, int fd)
-// {
-// 	int		i;
-// 	char	*buf;
-
-// 	i = 0;
-// 	buf = c;
-// 	while (buf[i] != '\0')
-// 	{
-// 		write(fd, &buf[i], 1);
-// 		i++;
-// 	}
-// }
 
 void	ft_putchar_fd(char c, int fd)
 {
