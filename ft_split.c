@@ -6,98 +6,88 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 03:09:25 by user              #+#    #+#             */
-/*   Updated: 2024/10/21 11:20:56 by user             ###   ########.fr       */
+/*   Updated: 2024/10/26 09:17:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft.h" // 必要なヘッダファイルをインクルード
 
-static int	get_word_length(char const *s, char c)
+static int	count_words(const char *str, char delimiter)
 {
-	int	len;
-	int	word_len;
-	int	flag;
+	int	count;
+	int	in_word;
 
-	len = 0;
-	word_len = 0;
-	flag = 0;
-	while (s[len] != '\0')
+	count = 0;
+	in_word = 0;
+	while (*str)
 	{
-		if (s[len] != c && flag == 0)
+		if (*str != delimiter && in_word == 0)
 		{
-			flag++;
-			word_len++;
+			in_word = 1;
+			count++;
 		}
-		else if (s[len] == c)
-			flag = 0;
-		len++;
+		else if (*str == delimiter)
+			in_word = 0;
+		str++;
 	}
-	return (word_len);
+	return (count);
 }
 
-static void	append_to_array(char *array, char const *s, int a, int len)
+static char	*get_next_word(const char **str, char delimiter)
+{
+	const char	*start;
+
+	start = *str;
+	while (**str && **str != delimiter)
+		(*str)++;
+	return (ft_substr(start, 0, *str - start));
+}
+
+static void	allocate_result(char ***result, int word_count)
+{
+	*result = (char **)ft_calloc(word_count + 1, sizeof(char *));
+}
+
+static int	process_words(const char **s, char c, char **result)
 {
 	int	i;
-	int	start;
 
 	i = 0;
-	start = a - len;
-	while (i < len)
+	while (**s)
 	{
-		array[i] = s[start + i];
-		i++;
-	}
-	array[i] = '\0';
-}
-
-static char	*prepend(char const *s, int len, int i)
-{
-	char	*arr;
-
-	arr = (char *)malloc((len + 1) * sizeof(char));
-	if (arr == NULL)
-		return (NULL);
-	append_to_array(arr, s, i, len);
-	return (arr);
-}
-
-static char	**append_array(char **array, char const *s, char c)
-{
-	int		i;
-	int		len;
-	int		array_index;
-
-	i = 0;
-	len = 0;
-	array_index = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
+		if (**s != c)
 		{
-			array[array_index] = prepend(s, len, i);
-			if (array[array_index] == NULL)
-				return (NULL);
-			len = 0;
-			array_index++;
+			result[i] = get_next_word(s, c);
+			if (!result[i])
+				return (i);
+			i++;
 		}
 		else
-			len++;
-		i++;
+			(*s)++;
 	}
-	array[array_index] = prepend(s, len, i);
-	array[array_index + 1] = NULL;
-	return (array);
+	return (i);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char *s, char c)
 {
-	char	**array;
+	int		word_count;
+	char	**result;
 
-	array = (char **)malloc((get_word_length(s, c) + 1) * sizeof(char *));
-	if (array == NULL)
+	if (!s)
 		return (NULL);
-	array = append_array(array, s, c);
-	return (array);
+	word_count = count_words(s, c);
+	allocate_result(&result, word_count);
+	if (!result)
+		return (NULL);
+	word_count = process_words(&s, c, result);
+	if (word_count < 0)
+	{
+		while (word_count > 0)
+			free(result[--word_count]);
+		free(result);
+		return (NULL);
+	}
+	return (result);
 }
 
 // #include <stdio.h>
