@@ -6,11 +6,11 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 03:09:25 by user              #+#    #+#             */
-/*   Updated: 2024/10/26 09:17:13 by user             ###   ########.fr       */
+/*   Updated: 2024/10/30 17:17:25 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // 必要なヘッダファイルをインクルード
+#include "libft.h"
 
 static int	count_words(const char *str, char delimiter)
 {
