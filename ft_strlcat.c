@@ -6,13 +6,13 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:41:40 by sbaba             #+#    #+#             */
-/*   Updated: 2024/07/24 19:00:01 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/11/06 17:52:43 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	destlen;
 	size_t	srclen;
