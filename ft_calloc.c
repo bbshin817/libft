@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 19:03:00 by sbaba             #+#    #+#             */
-/*   Updated: 2024/10/30 17:16:42 by user             ###   ########.fr       */
+/*   Updated: 2024/11/06 15:46:01 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void			*ptr;
 
-	if (count <= __SIZE_MAX__ / size)
+	if ((0 == size || 0 == count) || (count <= __SIZE_MAX__ / size))
 	{
 		ptr = malloc(count * size);
 		if (ptr != NULL)

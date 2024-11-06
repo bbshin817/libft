@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:42:59 by sbaba             #+#    #+#             */
-/*   Updated: 2024/10/22 02:57:40 by user             ###   ########.fr       */
+/*   Updated: 2024/11/06 15:19:59 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ char	*ft_strnstr(char *str, char *to_find, size_t size)
 	{
 		s = 0;
 		while ((f + s) < size && str[f + s] == to_find[s] && to_find[s] != '\0')
-			s = s + 1;
+			s++;
 		if (to_find[s] == '\0')
 			return ((char *)&str[f]);
-		f = f + 1;
+		f++;
 	}
 	return (NULL);
 }
