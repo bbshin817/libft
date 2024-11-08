@@ -6,7 +6,7 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 21:58:58 by user              #+#    #+#             */
-/*   Updated: 2024/07/06 17:26:32 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/11/08 15:59:59 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
+	int	i;
+
 	if (s)
 	{
-		write(fd, s, ft_strlen(s));
+		while (s[i] != '\0')
+		{
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}
 	}
 }
 
