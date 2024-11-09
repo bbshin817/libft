@@ -6,7 +6,7 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:33:33 by sbaba             #+#    #+#             */
-/*   Updated: 2024/07/06 17:21:39 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/11/09 23:13:52 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ void	*ft_memchr(const void *b, int c, size_t len)
 	}
 	return (NULL);
 }
+
+// void	*ft_memchr(const void *s, int c, size_t n)
+// {
+// 	size_t	i;
+
+// 	if (!s)
+// 		return (NULL);
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		if (*(unsigned char *)(s + i) == (unsigned char)c)
+// 			return ((void *)(s + i));
+// 		i++;
+// 	}
+// 	return (NULL);
+// }
 
 // #include <stdio.h>
 

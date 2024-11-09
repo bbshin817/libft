@@ -6,7 +6,7 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 16:01:56 by sbaba             #+#    #+#             */
-/*   Updated: 2024/07/06 17:21:39 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/11/09 22:44:21 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*p;
+	size_t			t;
 
-	p = s;
-	while (0 < n--)
+	p = (unsigned char *)s;
+	t = 0;
+	while (t < n)
 	{
-		*p++ = 0;
+		p[t] = '\0';
+		t++;
+		// *p++ = 0;
 	}
 }
 
