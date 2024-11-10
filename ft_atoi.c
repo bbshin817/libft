@@ -6,7 +6,7 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:01:23 by sbaba             #+#    #+#             */
-/*   Updated: 2024/11/10 20:25:46 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/11/10 20:26:05 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-#include <stdio.h>
-#include <stdlib.h>
+// #include <stdio.h>
+// #include <stdlib.h>
 
-int main(int argc, char *argv[])
-{
-	printf("[Input]\n%s\n\n[Result]\nft_atoi: %d\n", argv[1], ft_atoi(argv[1]));
-	printf("atoi: %d", atoi(argv[1]));
-}
+// int main(int argc, char *argv[])
+// {
+// 	printf("[Input]\n%s\n\n[Result]\nft_atoi: %d\n", argv[1], ft_atoi(argv[1]));
+// 	printf("atoi: %d", atoi(argv[1]));
+// }
