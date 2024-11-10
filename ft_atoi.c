@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:01:23 by sbaba             #+#    #+#             */
-/*   Updated: 2024/11/10 20:20:32 by user             ###   ########.fr       */
+/*   Updated: 2024/11/10 20:25:46 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,19 @@
 
 static long	consideration_overflow(char *str, int sign)
 {
-	long	result;
-	int		digit;
+	unsigned long	result;
+	unsigned long	over;
+	int				digit;
 
 	result = 0;
 	digit = 0;
+	over = (unsigned long)LONG_MAX;
 	while ('0' <= *str && *str <= '9')
 	{
 		digit = *str - '0';
-		if (0 < result && sign == 1 && result > (LONG_MAX - digit) / 10)
+		if (0 < result && sign == 1 && result > (over - digit) / 10)
 			return (LONG_MAX);
-		if (0 < result && sign == -1 && result > (LONG_MAX - digit + 1) / 10)
+		if (0 < result && sign == -1 && result > (over - digit + 1) / 10)
 			return (LONG_MIN);
 		result = result * 10 + digit;
 		str++;
@@ -57,11 +59,11 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-// #include <stdio.h>
-// #include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-// int main(int argc, char *argv[])
-// {
-// 	printf("[Input]\n%s\n\n[Result]\nft_atoi: %d\n", argv[1], ft_atoi(argv[1]));
-// 	printf("atoi: %d", atoi(argv[1]));
-// }
+int main(int argc, char *argv[])
+{
+	printf("[Input]\n%s\n\n[Result]\nft_atoi: %d\n", argv[1], ft_atoi(argv[1]));
+	printf("atoi: %d", atoi(argv[1]));
+}
