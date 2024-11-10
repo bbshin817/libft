@@ -3,50 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:01:23 by sbaba             #+#    #+#             */
-/*   Updated: 2024/11/09 22:38:26 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/11/10 20:20:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// use long
+/*
+31: the absolute value of long min is one greater than
+	long max, so we add one directly to it.
+*/
+
+static long	consideration_overflow(char *str, int sign)
+{
+	long	result;
+	int		digit;
+
+	result = 0;
+	digit = 0;
+	while ('0' <= *str && *str <= '9')
+	{
+		digit = *str - '0';
+		if (0 < result && sign == 1 && result > (LONG_MAX - digit) / 10)
+			return (LONG_MAX);
+		if (0 < result && sign == -1 && result > (LONG_MAX - digit + 1) / 10)
+			return (LONG_MIN);
+		result = result * 10 + digit;
+		str++;
+	}
+	return (result);
+}
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	num;
-	int	flag;
+	int		sign;
+	long	result;
 
-	i = 0;
 	sign = 1;
-	num = 0;
-	flag = 0;
-	while (((9 <= str[i] && str[i] <= 13) || str[i] == 32) && str[i] != '\0')
-		i++;
-	while ((str[i] == '+' || str[i] == '-') && str[i] != '\0' && 0 == flag)
+	result = 0;
+	while (((9 <= *str && *str <= 13) || *str == 32) && *str != '\0')
+		str++;
+	if (*str == '+')
+		str++;
+	else if (*str == '-')
 	{
-		flag = 1;
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		sign = -1;
+		str++;
 	}
-	while ('0' <= str[i] && str[i] <= '9' && str[i] != '\0')
-	{
-		num = num * 10 + (int)(str[i] - '0');
-		i++;
-	}
-	return (num * sign);
+	result = (int)consideration_overflow((char *)str, sign);
+	return (result * sign);
 }
 
 // #include <stdio.h>
+// #include <stdlib.h>
 
-// int main(void)
+// int main(int argc, char *argv[])
 // {
-// 	char	str[] = "      --+-++--1234aaaa567";
-
-// 	printf("[Input]\n%s\n\n[Result]\n%d", str, ft_atoi(str));
+// 	printf("[Input]\n%s\n\n[Result]\nft_atoi: %d\n", argv[1], ft_atoi(argv[1]));
+// 	printf("atoi: %d", atoi(argv[1]));
 // }

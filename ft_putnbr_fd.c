@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 21:59:00 by user              #+#    #+#             */
-/*   Updated: 2024/11/09 23:01:04 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/11/10 20:09:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,3 @@ void	ft_putnbr_fd(int n, int fd)
 // 		ft_putnbr_fd(i / 10, fd);
 // 	ft_putchar_fd((i % 10) + '0', fd);
 // }
-
-int	main()
-{
-	ft_putnbr_fd(-2147483648, STDOUT_FILENO);
-}
