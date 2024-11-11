@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 21:58:53 by user              #+#    #+#             */
-/*   Updated: 2024/10/22 02:55:47 by user             ###   ########.fr       */
+/*   Updated: 2024/11/11 16:42:02 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	size_t	i;
 
-	if (s == NULL || f == NULL)
+	if (!s || !f)
 		return ;
 	i = 0;
 	while (s[i] != '\0')

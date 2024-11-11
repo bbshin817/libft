@@ -6,7 +6,7 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:21:37 by sbaba             #+#    #+#             */
-/*   Updated: 2024/11/08 16:00:42 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/11/11 16:44:06 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 	size_t	len;
 	char	*result;
 
-	if (s1 == NULL || set == NULL)
+	if (!s1 || !set)
 		return (NULL);
 	front = search_by_front(s1, set);
 	back = search_by_back(s1, set);

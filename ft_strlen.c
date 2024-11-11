@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:22:20 by sbaba             #+#    #+#             */
-/*   Updated: 2024/10/30 17:05:04 by user             ###   ########.fr       */
+/*   Updated: 2024/11/11 15:59:37 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ size_t	ft_strlen(const	char *str)
 }
 
 // #include <stdio.h>
+// #include <string.h>
 
 // int	main(void)
 // {
 // 	char *str = "Hello! World!";
 // 	printf("String: %ld\n", ft_strlen(str));
+// 	printf("%ld\n", strlen(str));
 
 // 	return (0);
 // }

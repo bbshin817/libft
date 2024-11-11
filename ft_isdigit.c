@@ -6,7 +6,7 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:27:23 by sbaba             #+#    #+#             */
-/*   Updated: 2024/11/10 20:31:03 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/11/11 16:52:32 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,18 @@ int	ft_isdigit(int c)
 	return ('0' <= c && c <= '9');
 }
 
-// #include <stdio.h>
+#include <stdio.h>
+#include <ctype.h>
 
-// int	main(void)
-// {
-// 	printf("[1], %d\n", ft_isdigit('1'));
-// 	printf("[a], %d\n", ft_isdigit('a'));
-// 	printf("[0], %d\n", ft_isdigit('0'));
-// 	printf("[+], %d\n", ft_isdigit('+'));
-// }
+int	main(void)
+{
+	int	array[] = {
+		'1', '2', 'a', '&'
+	};
+	int	i = 0;
+	while(i < (sizeof(array) / sizeof(array[0])))
+	{
+		printf("Input: %c\nft_isdigit: %d\nisdigit: %d\n-----\n", array[i], ft_isdigit(array[i]), isdigit(array[i]));
+		i++;
+	}
+}

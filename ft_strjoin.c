@@ -6,7 +6,7 @@
 /*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 21:49:16 by user              #+#    #+#             */
-/*   Updated: 2024/07/06 16:34:26 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/11/11 16:43:44 by sbaba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t		l2;
 	char		*result;
 
-	if (s1 == NULL || s2 == NULL)
+	if (!s1 || !s2)
 		return (NULL);
 	l1 = ft_strlen(s1);
 	l2 = ft_strlen(s2);
