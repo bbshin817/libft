@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaba <sbaba@student.42.fr>                +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:33:33 by sbaba             #+#    #+#             */
-/*   Updated: 2024/11/11 15:47:54 by sbaba            ###   ########.fr       */
+/*   Updated: 2024/11/11 17:06:07 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	*ft_memchr(const void *b, int c, size_t len)
 	size_t				i;
 	const unsigned char	*p;
 
-	if (!b)
-		return (NULL);
 	i = 0;
 	p = b;
 	while (i < len)
